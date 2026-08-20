@@ -67,7 +67,7 @@ async function runDemoLoop() {
 
     // meta
     setDemoState('complete');
-    demoMeta.innerHTML = '<span class="demo-pill">Success</span><span class="demo-pill">614ms total</span>';
+    demoMeta.innerHTML = '<span class="demo-pill">Success</span><span class="demo-pill">5.3ms total</span>';
 
     // sources
     DEMO_SOURCES.forEach((s, i) => {
