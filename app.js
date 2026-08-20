@@ -2,6 +2,23 @@
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+/* ---------- header scroll elevation ---------- */
+const siteHeader = document.querySelector('.site-header');
+if (siteHeader) {
+    let ticking = false;
+    const applyScrollState = () => {
+        siteHeader.classList.toggle('scrolled', window.scrollY > 8);
+        ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(applyScrollState);
+            ticking = true;
+        }
+    }, { passive: true });
+    applyScrollState();
+}
+
 /* ---------- orchestrated hero demo loop ---------- */
 const demoOrbWrap = document.getElementById('demoOrbWrap');
 const demoDot = document.getElementById('demoDot');
@@ -14,6 +31,7 @@ const demoSources = document.getElementById('demoSources');
 const DEMO_QUERY = 'What is RAG?';
 const DEMO_ANSWER = 'Retrieval-Augmented Generation combines search with a language model — it retrieves verified passages, then grounds its answer in exactly what it found.';
 const DEMO_SOURCES = ['FAISS Vector Index', 'MSMARCO-XI Dataset'];
+const SKELETON_HTML = '<span class="demo-skel-line" style="width:100%"></span><span class="demo-skel-line" style="width:91%"></span><span class="demo-skel-line" style="width:74%"></span>';
 
 function setDemoState(s) {
     demoDot.className = 'demo-dot ' + s;
@@ -41,7 +59,7 @@ async function runDemoLoop() {
     // reset
     setDemoState('idle');
     demoTranscript.innerHTML = '<span class="placeholder">·</span>';
-    demoAnswer.textContent = '';
+    demoAnswer.innerHTML = '';
     demoMeta.innerHTML = '';
     demoSources.innerHTML = '';
 
@@ -57,7 +75,11 @@ async function runDemoLoop() {
 
     // transcript
     await typeInto(demoTranscript, DEMO_QUERY);
-    await wait(300);
+
+    // brief shimmer skeleton while the "answer" is being generated
+    demoAnswer.innerHTML = SKELETON_HTML;
+    await wait(420);
+    demoAnswer.innerHTML = '';
 
     // answer
     demoAnswer.style.opacity = '0';
@@ -67,7 +89,7 @@ async function runDemoLoop() {
 
     // meta
     setDemoState('complete');
-    demoMeta.innerHTML = '<span class="demo-pill">Success</span><span class="demo-pill">5.3ms total</span>';
+    demoMeta.innerHTML = '<span class="demo-pill">Success</span><span class="demo-pill">178ms total</span>';
 
     // sources
     DEMO_SOURCES.forEach((s, i) => {
@@ -88,7 +110,7 @@ if (demoOrbWrap) {
         setDemoState('complete');
         demoTranscript.textContent = DEMO_QUERY;
         demoAnswer.textContent = DEMO_ANSWER;
-        demoMeta.innerHTML = '<span class="demo-pill">Success</span><span class="demo-pill">614ms total</span>';
+        demoMeta.innerHTML = '<span class="demo-pill">Success</span><span class="demo-pill">178ms total</span>';
         DEMO_SOURCES.forEach((s, i) => {
             const row = document.createElement('div');
             row.className = 'demo-source-row show';
