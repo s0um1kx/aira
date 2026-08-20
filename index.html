@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aira — Ask it out loud. Get an answer it can prove.</title>
+    <meta name="description" content="aira listens, retrieves the exact passages behind its answer, and shows you where they came from. Voice-native retrieval-augmented intelligence for Indic languages.">
+
+    <link rel="icon" href="/favicon/favicon-adaptive.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="/favicon/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;650&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,300;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <a class="brand" href="#top" aria-label="aira home">
+            <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true">
+                <polygon points="60.39,44.00 60.39,56.00 50.00,62.00 39.61,56.00 39.61,44.00 50.00,38.00"></polygon>
+                <circle cx="79.00" cy="50.00" r="12.5"></circle>
+                <circle cx="64.50" cy="75.11" r="12.5"></circle>
+                <circle cx="35.50" cy="75.11" r="12.5"></circle>
+                <circle cx="21.00" cy="50.00" r="12.5"></circle>
+                <circle cx="35.50" cy="24.89" r="12.5"></circle>
+                <circle cx="64.50" cy="24.89" r="12.5"></circle>
+            </svg>
+            <span class="brand-word mono">aira</span>
+        </a>
+        <nav class="site-nav">
+            <a class="nav-link mono" href="#how-it-works">How it works</a>
+            <a class="btn-primary btn-small" href="https://voice-rag-pipeline.onrender.com/" target="_blank" rel="noopener">Launch aira</a>
+        </nav>
+    </header>
+
+    <main id="top">
+
+        <!-- ============ HERO ============ -->
+        <section class="hero">
+            <div class="hero-inner">
+                <div class="hero-copy">
+                    <div class="eyebrow">
+                        <span class="eyebrow-line"></span>
+                        <span class="eyebrow-text mono">INDIC VOICE INTELLIGENCE</span>
+                    </div>
+                    <h1 class="hero-h1">Ask it out loud.<br>Get an answer it can prove.</h1>
+                    <p class="hero-sub">aira listens, searches a real knowledge base for the passages behind its answer, and shows you exactly where they came from — grounded and cited, never guessed.</p>
+                    <div class="hero-ctas">
+                        <a class="btn-primary" href="https://voice-rag-pipeline.onrender.com/" target="_blank" rel="noopener">Launch aira →</a>
+                        <a class="btn-secondary mono" href="#how-it-works">See how it works</a>
+                    </div>
+                </div>
+
+                <div class="hero-demo" aria-hidden="true">
+                    <div class="demo-card">
+                        <div class="demo-topline">
+                            <span id="demoDot" class="demo-dot"></span>
+                            <span id="demoStatus" class="mono">idle</span>
+                        </div>
+
+                        <div class="demo-orb-wrap" id="demoOrbWrap">
+                            <div class="demo-aura"></div>
+                            <svg class="demo-hex-svg" viewBox="0 0 100 100">
+                                <polygon id="demoHexPoly" class="demo-hex-polygon" points="60.39,44.00 60.39,56.00 50.00,62.00 39.61,56.00 39.61,44.00 50.00,38.00"></polygon>
+                                <circle class="demo-hex-dot" cx="80.00" cy="50.00" r="10.5"></circle>
+                                <circle class="demo-hex-dot" cx="65.00" cy="75.98" r="10.5"></circle>
+                                <circle class="demo-hex-dot" cx="35.00" cy="75.98" r="10.5"></circle>
+                                <circle class="demo-hex-dot" cx="20.00" cy="50.00" r="10.5"></circle>
+                                <circle class="demo-hex-dot" cx="35.00" cy="24.02" r="10.5"></circle>
+                                <circle class="demo-hex-dot" cx="65.00" cy="24.02" r="10.5"></circle>
+                            </svg>
+                            <div id="demoBars" class="demo-bars">
+                                <div class="demo-bar"></div>
+                                <div class="demo-bar"></div>
+                                <div class="demo-bar"></div>
+                                <div class="demo-bar"></div>
+                            </div>
+                        </div>
+
+                        <div class="demo-section-label mono">Transcript</div>
+                        <div id="demoTranscript" class="demo-transcript"><span class="placeholder">·</span></div>
+
+                        <div class="demo-answer-kicker mono">Response</div>
+                        <div id="demoAnswer" class="demo-answer"></div>
+
+                        <div id="demoMeta" class="demo-meta"></div>
+                        <div id="demoSources" class="demo-sources"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ HOW IT WORKS ============ -->
+        <section class="how" id="how-it-works">
+            <div class="how-head">
+                <div class="eyebrow">
+                    <span class="eyebrow-line"></span>
+                    <span class="eyebrow-text mono">HOW IT WORKS</span>
+                </div>
+                <h2 class="how-h2">From voice to grounded answer, in four steps.</h2>
+            </div>
+
+            <div class="how-grid">
+                <div class="how-card">
+                    <div class="how-num mono">01</div>
+                    <h3 class="how-title">Speak</h3>
+                    <p class="how-desc">Press the orb and ask your question out loud — no typing, no menus.</p>
+                </div>
+                <div class="how-card">
+                    <div class="how-num mono">02</div>
+                    <h3 class="how-title">Transcribe</h3>
+                    <p class="how-desc">Sarvam AI's Saaras model turns your speech into text in real time.</p>
+                </div>
+                <div class="how-card">
+                    <div class="how-num mono">03</div>
+                    <h3 class="how-title">Retrieve</h3>
+                    <p class="how-desc">FAISS searches a dense vector index for the passages that actually answer it.</p>
+                </div>
+                <div class="how-card">
+                    <div class="how-num mono">04</div>
+                    <h3 class="how-title">Answer</h3>
+                    <p class="how-desc">A grounded response comes back with the exact sources it was built from.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ FINAL CTA ============ -->
+        <section class="final-cta">
+            <h2 class="final-h2">Stop guessing. Start asking.</h2>
+            <a class="btn-primary btn-large" href="https://voice-rag-pipeline.onrender.com/" target="_blank" rel="noopener">Launch aira →</a>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="brand foot-brand">
+            <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true">
+                <polygon points="60.39,44.00 60.39,56.00 50.00,62.00 39.61,56.00 39.61,44.00 50.00,38.00"></polygon>
+                <circle cx="79.00" cy="50.00" r="12.5"></circle>
+                <circle cx="64.50" cy="75.11" r="12.5"></circle>
+                <circle cx="35.50" cy="75.11" r="12.5"></circle>
+                <circle cx="21.00" cy="50.00" r="12.5"></circle>
+                <circle cx="35.50" cy="24.89" r="12.5"></circle>
+                <circle cx="64.50" cy="24.89" r="12.5"></circle>
+            </svg>
+            <span class="brand-word mono">aira</span>
+        </div>
+        <div class="foot-line mono">AIRA • RETRIEVAL EXPERIENCE</div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
